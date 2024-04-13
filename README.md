@@ -1,1 +1,2 @@
-# crudNodejs
+# CRUD básico NODEjs + Express + mongoDB
+ 
