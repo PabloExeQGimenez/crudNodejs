@@ -2,6 +2,7 @@ const express = require("express");
 const Autor = require("../models/Autor");
 const AutorRouter = express.Router();
 
+// funciones sin controladores
 AutorRouter.get("/", async (req, res) => {
   let autores = await Autor.find({})
   return res.status(200).send({
