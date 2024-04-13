@@ -55,9 +55,13 @@ LibroRouter.get("/libros", async (req, res) => {
 LibroRouter.get("/libro/:id", async (req, res)=>{
   try {
     const {id} = req.params
-    let libro = await Libro.findById(id)
+    let libro = await Libro.findById(id).populate({
+        path: "autor",
+        select: "name surname"
 
-    if(!book){
+      })
+
+    if(!libro){
       return res.status(404).send({
         seccess: false,
         message: "libro no encontrado"
