@@ -37,6 +37,26 @@ AutorRouter.post('/autor', async (req, res) => {
   }
 });
 
+AutorRouter.put("/update/:id", async (req, res) => {
+  try{
+
+    const { id } = req.params;
+    const { name, surname, age } = req.body;
+    
+    await Autor.findByIdAndUpdate(id, {name, surname, age})
+    return res.status(200).send({
+      success: true,
+      message: 'Autor actualizado con éxito'
+    });
+
+  } catch(error){
+    return res.status(500).send({
+      success: false,
+      message: error.message
+    });
+  }
+})
+
 AutorRouter.delete("/delete/:id", async (req, res) => {
 
   try {
@@ -53,9 +73,6 @@ AutorRouter.delete("/delete/:id", async (req, res) => {
     });
   }
 });
-
-
-
 
 
 module.exports = AutorRouter;
